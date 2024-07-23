@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
 
+import ClosetNavigator from './../../components/closet/ClosetNavigator'
 import { Text, View } from '@/components/Themed';
-
+  
 export default function Closet() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Closet Tab</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <ClosetNavigator/> 
     </View>
   );
 }
