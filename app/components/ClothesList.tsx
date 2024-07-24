@@ -1,47 +1,45 @@
 import { StyleSheet, FlatList, View } from "react-native";
 import Piece from './Piece';
 import AddButton from "./AddButton";
-
-const DATA = [
-    {
-      id: 'fd7acbea-51b1-46c2-a2d5-3ad53abb28ba',
-      title: 'Button',
-      type: 'button',
-    },
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-      type: 'piece',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-      type: 'piece',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-      type: 'piece',
-    },
-];
+import { useAppSelector, useAppDispatch } from "../hooks";
+import { PieceType } from './clothesSlice'
 
 export default function ClothesList() {
-    return (
-        <View style={styles.container}>
-            <FlatList
-            data={DATA}
-            numColumns={2}
-            horizontal={false} 
-            renderItem={({item}) => {
-                if (item.type == 'button') {
-                    return <AddButton/>
-                }
-                return <Piece/>
-            }}
-            keyExtractor={item => item.id}
-            />
-        </View>
-    );
+  // Get the pieces from the store and create button object 
+  const pieces = useAppSelector((state) => state.clothes.pieces);
+  const pieceButton: PieceType = {
+    id: 'button',
+    name: 'button',
+    type: 'button', 
+    size: 'button',
+    color: 'button',
+  };
+
+  // Copy the pieces from the store and push the button object as the final piece
+  // Finally reverse the data in order to have button first (this may need changing based on filters and such)
+  // Reversing may not work well when filtering, so probably need to contruct the setup a different, more efficient way eventually
+  const DATA: PieceType[] = [];
+  pieces.forEach(val => DATA.push(Object.assign({}, val)));
+  DATA.push(pieceButton);
+  DATA.reverse();
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+      data={DATA}
+      numColumns={2}
+      horizontal={false} 
+      // Render add button instead of piece for pieces typed 'button'
+      renderItem={({item}) => {
+        if (item.type == 'button') {
+          return <AddButton/>
+        }
+        return <Piece/>
+      }}
+      keyExtractor={item => item.id}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

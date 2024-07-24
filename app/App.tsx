@@ -1,20 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ClosetNavigator from './navigators/ClosetNavigator'
-import GeneratorScreen from './screens/GeneratorScreen'
-
-const Tab = createBottomTabNavigator();
+import { StyleSheet } from 'react-native'
+import { store } from './store'
+import { Provider } from 'react-redux'
+import MainNavigator from './navigators/MainNavigator';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Closet" component={ClosetNavigator} />
-        <Tab.Screen name="Outfit Generator" component={GeneratorScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
   );
 }
 
