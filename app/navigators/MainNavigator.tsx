@@ -6,7 +6,7 @@ import GeneratorScreen from './../screens/GeneratorScreen'
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+export default function MainNavigator() {
   return (
     <NavigationContainer>
       <Tab.Navigator>

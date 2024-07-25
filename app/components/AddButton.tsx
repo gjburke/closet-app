@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { StyleSheet, Pressable, Text } from 'react-native'
 import { addPiece, PieceType } from './clothesSlice';
 import { useAppDispatch } from '../hooks';
+import {Dimensions} from 'react-native';
 
 const samplePiece: PieceType = {
   id: '1',
@@ -12,9 +14,11 @@ const samplePiece: PieceType = {
 
 export default function AddButton() {
   const dispatch = useAppDispatch();
+  const [id, setID] = useState(0);
 
   function handleClick() {
-    dispatch(addPiece(samplePiece));
+    setID(id => id + 1);
+    dispatch(addPiece({...samplePiece, id: String(id)}));
   }
 
   return (
@@ -24,10 +28,12 @@ export default function AddButton() {
   );
 }
 
+const windowWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   addButton: {
-    width: 175,
-    height: 175,
+    width: windowWidth * 0.45,
+    height: windowWidth * 0.45,
     backgroundColor: 'red',
     padding: 20,
     marginVertical: 8,

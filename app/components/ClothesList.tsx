@@ -15,20 +15,15 @@ export default function ClothesList() {
     color: 'button',
   };
 
-  // Copy the pieces from the store and push the button object as the final piece
-  // Finally reverse the data in order to have button first (this may need changing based on filters and such)
-  // Reversing may not work well when filtering, so probably need to contruct the setup a different, more efficient way eventually
-  const DATA: PieceType[] = [];
+  // Add the button to the front and then copy all of the pieces to the dosplay data 
+  const DATA: PieceType[] = [pieceButton];
   pieces.forEach(val => DATA.push(Object.assign({}, val)));
-  DATA.push(pieceButton);
-  DATA.reverse();
 
   return (
     <View style={styles.container}>
       <FlatList
       data={DATA}
       numColumns={2}
-      horizontal={false} 
       // Render add button instead of piece for pieces typed 'button'
       renderItem={({item}) => {
         if (item.type == 'button') {
@@ -44,9 +39,8 @@ export default function ClothesList() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    position: 'absolute',
-    top: 8,
-    left: 8,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

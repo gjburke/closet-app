@@ -3,13 +3,9 @@ import ClothesList from "../components/ClothesList";
 
 export default function Index() {
   return (
-    <View
-      style={styles.container}
-    >
+    <View style={styles.container}>
       <Text>This is the clothes tab</Text>
-      <View>
-        <ClothesList/>
-      </View>
+      <ClothesList/>
     </View>
   );
 }
@@ -17,6 +13,8 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 15,
   },
 });
