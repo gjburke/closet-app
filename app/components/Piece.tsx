@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native' 
 import {Dimensions} from 'react-native';
+import { ItemProps } from './ClothesList';
 
-export default function Piece() {
+export default function Piece({ id }: ItemProps) {
     return (
         <View style={styles.item}>
-            <Text>This is a piece of clothing!</Text>
+            <Text>This is a piece of clothing with id: {id}!</Text>
         </View>
     );
 }

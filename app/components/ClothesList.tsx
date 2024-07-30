@@ -4,6 +4,8 @@ import AddButton from "./AddButton";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { PieceType } from './clothesSlice'
 
+export type ItemProps = {id: string;}
+
 export default function ClothesList() {
   // Get the pieces from the store and create button object 
   const pieces = useAppSelector((state) => state.clothes.pieces);
@@ -26,10 +28,10 @@ export default function ClothesList() {
       numColumns={2}
       // Render add button instead of piece for pieces typed 'button'
       renderItem={({item}) => {
-        if (item.type == 'button') {
+        if (item.type === 'button') {
           return <AddButton/>
         }
-        return <Piece/>
+        return <Piece id={item.id}/>
       }}
       keyExtractor={item => item.id}
       />

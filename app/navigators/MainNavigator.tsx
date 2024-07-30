@@ -19,7 +19,7 @@ export default function MainNavigator() {
           <RootStack.Screen options={{ headerShown: false }} name="Tabs" component={TabNavigtor}/>
         </RootStack.Group>
         <RootStack.Group screenOptions={{ presentation: 'modal' }}>
-          <RootStack.Screen name="AddPiece" component={PieceAdder}/>
+          <RootStack.Screen options={{ title: "Add Piece" }} name="AddPiece" component={PieceAdder}/>
         </RootStack.Group>
       </RootStack.Navigator>
     </NavigationContainer>
