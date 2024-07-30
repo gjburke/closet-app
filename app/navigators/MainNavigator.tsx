@@ -1,18 +1,27 @@
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ClosetNavigator from './ClosetNavigator'
-import GeneratorScreen from './../screens/GeneratorScreen'
+import { createStackNavigator } from '@react-navigation/stack'
+import PieceAdder from './../components/PieceAdder'
+import TabNavigtor from './TabNavigator';
 
-const Tab = createBottomTabNavigator();
+export type RootStackParams = {
+  Tabs;
+  AddPiece;
+} 
+
+const RootStack = createStackNavigator<RootStackParams>();
 
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Closet" component={ClosetNavigator} />
-        <Tab.Screen name="Outfit Generator" component={GeneratorScreen} />
-      </Tab.Navigator>
+      <RootStack.Navigator>
+        <RootStack.Group>
+          <RootStack.Screen options={{ headerShown: false }} name="Tabs" component={TabNavigtor}/>
+        </RootStack.Group>
+        <RootStack.Group screenOptions={{ presentation: 'modal' }}>
+          <RootStack.Screen name="AddPiece" component={PieceAdder}/>
+        </RootStack.Group>
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 }
