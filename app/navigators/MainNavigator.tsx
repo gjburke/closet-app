@@ -3,10 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
 import PieceAdder from './../components/PieceAdder'
 import TabNavigtor from './TabNavigator';
+import PieceScreen from './../screens/PieceScreen'
 
 export type RootStackParams = {
   Tabs;
   AddPiece;
+  PieceScreen;
 } 
 
 const RootStack = createStackNavigator<RootStackParams>();
@@ -20,6 +22,7 @@ export default function MainNavigator() {
         </RootStack.Group>
         <RootStack.Group screenOptions={{ presentation: 'modal' }}>
           <RootStack.Screen options={{ title: "Add Piece" }} name="AddPiece" component={PieceAdder}/>
+          <RootStack.Screen options={{ title: "Piece"}} name="PieceScreen" component={PieceScreen}/>
         </RootStack.Group>
       </RootStack.Navigator>
     </NavigationContainer>
