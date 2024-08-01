@@ -6,9 +6,11 @@ import TabNavigtor from './TabNavigator';
 import PieceScreen from './../screens/PieceScreen'
 
 export type RootStackParams = {
-  Tabs;
-  AddPiece;
-  PieceScreen;
+  Tabs: undefined;
+  AddPiece: undefined;
+  PieceScreen: {
+    id: string;
+  };
 } 
 
 const RootStack = createStackNavigator<RootStackParams>();

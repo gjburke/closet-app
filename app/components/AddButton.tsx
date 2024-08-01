@@ -8,12 +8,12 @@ import type { StackNavigationProp } from '@react-navigation/stack';
 export default function AddButton() {
   const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
 
-  function handleClick() {
+  function handlePress() {
     navigation.navigate('AddPiece');
   }
 
   return (
-    <Pressable style={styles.addButton} onPress={handleClick}>
+    <Pressable style={styles.addButton} onPress={handlePress}>
       <Text>This is the adding button</Text>
     </Pressable>
   );
