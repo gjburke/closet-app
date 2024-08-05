@@ -4,7 +4,7 @@ import AddButton from "./AddButton";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { PieceType } from './clothesSlice'
 
-export type ItemProps = {id: string;}
+export type ItemProps = { piece: PieceType }
 
 export default function ClothesList() {
   // Get the pieces from the store and create button object 
@@ -31,7 +31,7 @@ export default function ClothesList() {
         if (item.type === 'button') {
           return <AddButton/>
         }
-        return <Piece id={item.id}/>
+        return <Piece piece={item}/>
       }}
       keyExtractor={item => item.id}
       />

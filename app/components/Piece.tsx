@@ -5,17 +5,17 @@ import { useNavigation } from '@react-navigation/native';
 import { RootStackParams } from '../navigators/MainNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-export default function Piece({ id }: ItemProps) {
+export default function Piece({ piece }: ItemProps) {
     const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
 
     function handlePress() {
-        navigation.navigate('PieceScreen', {id})
+        navigation.navigate('PieceScreen', {piece.id})
     }
 
     return (
         <Pressable onPress={handlePress}> 
             <View style={styles.item}>
-                <Text>This is a piece of clothing with id: {id}!</Text>
+                <Text>This is a piece of clothing with name: {piece.name}!</Text>
             </View>
         </Pressable>
     );
