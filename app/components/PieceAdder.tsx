@@ -16,15 +16,14 @@ export default function PieceAdder() {
     const navigation = useNavigation();
     const dispatch = useAppDispatch();
     const [text, setText] = useState('');
-    const [currentID, setCurrentID] = useState(0);
+    const [currentID, setCurrentID] = useState(1);
 
     function handleClick() {
-        dispatch(addPiece({ ...samplePiece, name: text, id: currentID.toString()}));
-        setText('');
-        setCurrentID(id => id + 1);
-        navigation.goBack();
+      console.log("New id: " + currentID.toString())
+      dispatch(addPiece({ ...samplePiece, name: text, id: currentID.toString()}));
+      setText('');
+      setCurrentID(currentID + 1);
     }
-
     return (
         <View style={ styles.container }>
             <Text>This is the piece adder</Text>
