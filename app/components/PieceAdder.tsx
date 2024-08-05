@@ -16,17 +16,19 @@ export default function PieceAdder() {
     const navigation = useNavigation();
     const dispatch = useAppDispatch();
     const [text, setText] = useState('');
+    const [currentID, setCurrentID] = useState(0);
 
     function handleClick() {
-        setText('')
-        dispatch(addPiece({ ...samplePiece, id: text}));
+        dispatch(addPiece({ ...samplePiece, name: text, id: currentID.toString()}));
+        setText('');
+        setCurrentID(id => id + 1);
         navigation.goBack();
     }
 
     return (
         <View style={ styles.container }>
             <Text>This is the piece adder</Text>
-            <TextInput style={{ height: 40 }} placeholder="Type ID Here" onChangeText={newText => setText(newText)} defaultValue={text}/>
+            <TextInput style={{ height: 40 }} placeholder="Type Name Here" onChangeText={newText => setText(newText)} defaultValue={text}/>
             <Pressable onPress={handleClick}> 
                 <Text>Add Piece</Text>
             </Pressable>
