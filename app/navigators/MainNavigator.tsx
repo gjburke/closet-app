@@ -4,12 +4,13 @@ import { createStackNavigator } from '@react-navigation/stack'
 import PieceAdder from './../components/PieceAdder'
 import TabNavigtor from './TabNavigator';
 import PieceScreen from './../screens/PieceScreen'
+import { PieceType } from './../components/clothesSlice'
 
 export type RootStackParams = {
   Tabs: undefined;
   AddPiece: undefined;
   PieceScreen: {
-    id: string;
+    piece: PieceType;
   };
 } 
 

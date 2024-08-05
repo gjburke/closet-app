@@ -9,7 +9,7 @@ export default function Piece({ piece }: ItemProps) {
     const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
 
     function handlePress() {
-        navigation.navigate('PieceScreen', {piece.id})
+        navigation.navigate('PieceScreen', { piece })
     }
 
     return (

@@ -1,15 +1,11 @@
 import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 import { RootStackParams } from '../navigators/MainNavigator';
-import { useAppSelector } from '../hooks';
 
 type Props = NativeStackScreenProps<RootStackParams, "PieceScreen">;
 
 export default function PieceScreen({ route, navigation }: Props) {
-  const pieces = useAppSelector((state) => state.clothes.pieces);
-  const ID = route.params.id;
-
-  const piece = pieces.filter((piece) => piece.id === ID)[0];
+  const piece = route.params.piece;
   
   return (
     <View style={ styles.container }>
