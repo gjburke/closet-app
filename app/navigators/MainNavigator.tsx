@@ -5,6 +5,8 @@ import PieceAdder from './../components/PieceAdder'
 import TabNavigtor from './TabNavigator';
 import PieceScreen from './../screens/PieceScreen'
 import { PieceType } from './../components/clothesSlice'
+import { OutfitType } from '../components/outfitSlice';
+import { OutfitView } from '../screens/OutfitView'
 
 export type RootStackParams = {
   Tabs: undefined;
@@ -12,6 +14,9 @@ export type RootStackParams = {
   PieceScreen: {
     piece: PieceType;
   };
+  OutfitView: {
+    outfit: OutfitType;
+  }
 } 
 
 const RootStack = createStackNavigator<RootStackParams>();
@@ -25,7 +30,8 @@ export default function MainNavigator() {
         </RootStack.Group>
         <RootStack.Group screenOptions={{ presentation: 'modal' }}>
           <RootStack.Screen options={{ title: "Add Piece" }} name="AddPiece" component={PieceAdder}/>
-          <RootStack.Screen options={{ title: "Piece"}} name="PieceScreen" component={PieceScreen}/>
+          <RootStack.Screen options={{ title: "Piece" }} name="PieceScreen" component={PieceScreen}/>
+          <RootStack.Screen options={{ title: "Outfit" }} name="OutfitView" component={OutfitView}/>
         </RootStack.Group>
       </RootStack.Navigator>
     </NavigationContainer>
