@@ -6,7 +6,7 @@ import { OutfitType } from './outfitSlice'
 
 export type ItemProps = { outfit: OutfitType }
 
-export default function ClothesList() {
+export default function OutfitList() {
   // Get the outfits from the store
   const outfits = useAppSelector((state) => state.outfits.outfits)
   // Add the button to the front and then copy all of the pieces to the dosplay data 

@@ -9,8 +9,8 @@ export default function OutfitView({ route, navigation }: Props) {
   
   return (
     <View style={ styles.container }>
-      <Text>This is the piece screen</Text>
-      <Text>The name for the piece is: { outfit.name }</Text>
+      <Text>This is the outfit screen</Text>
+      <Text>The name for the outfit is: { outfit.name }</Text>
       <Pressable onPress={() => navigation.goBack()}>
         <Text>GO BACK</Text>
       </Pressable>
