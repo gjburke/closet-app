@@ -6,6 +6,42 @@ import { OutfitType } from './outfitSlice'
 
 export type ItemProps = { outfit: OutfitType }
 
+const TEST_DATA: Array<OutfitType> = [
+    {
+        id: "1",
+        name: "test 1",
+        pieces: [{
+            id: "1",
+            name: "test cloth 1",
+            type: "test",
+            size: "test",
+            color: "test",
+        }],
+    },
+    {
+        id: "2",
+        name: "test 2",
+        pieces: [{
+            id: "2",
+            name: "test cloth 2",
+            type: "test",
+            size: "test",
+            color: "test",
+        }],
+    },
+    {
+        id: "3",
+        name: "test 3",
+        pieces: [{
+            id: "3",
+            name: "test cloth 3",
+            type: "test",
+            size: "test",
+            color: "test",
+        }],
+    },
+];
+
 export default function OutfitList() {
   // Get the outfits from the store
   const outfits = useAppSelector((state) => state.outfits.outfits)
@@ -16,7 +52,7 @@ export default function OutfitList() {
   return (
     <View style={styles.container}>
       <FlatList
-      data={DATA}
+      data={TEST_DATA}
       numColumns={2}
       // Render add button instead of piece for pieces typed 'button'
       renderItem={({item}) => <Outfit outfit={item}/>}
