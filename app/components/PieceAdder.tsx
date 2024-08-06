@@ -19,10 +19,10 @@ export default function PieceAdder() {
     const [currentID, setCurrentID] = useState(1);
 
     function handleClick() {
-      console.log("New id: " + currentID.toString())
       dispatch(addPiece({ ...samplePiece, name: text, id: currentID.toString()}));
       setText('');
       setCurrentID(currentID + 1);
+      navigation.goBack();
     }
     return (
         <View style={ styles.container }>
