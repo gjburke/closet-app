@@ -6,7 +6,7 @@ import TabNavigtor from './TabNavigator';
 import PieceScreen from './../screens/PieceScreen'
 import { PieceType } from './../components/clothesSlice'
 import { OutfitType } from '../components/outfitSlice';
-import { OutfitView } from '../screens/OutfitView'
+import OutfitView from '../screens/OutfitView'
 
 export type RootStackParams = {
   Tabs: undefined;
