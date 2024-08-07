@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   piece: {
     width: windowWidth * 0.45,
     height: windowWidth * 0.45,
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 8,
