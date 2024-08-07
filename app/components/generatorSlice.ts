@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../store'
-import clothesSlice, { PieceType } from './clothesSlice'
+import { PieceType } from './clothesSlice'
 
 interface GeneratorState {
     pieces: Array<PieceType>,
