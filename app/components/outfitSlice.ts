@@ -6,7 +6,7 @@ export interface OutfitType {
     id: string;
     name: string;
     pieces: Array<PieceType>;
-}
+};
 
 interface OutfitState {
     outfits: Array<OutfitType>,
@@ -14,7 +14,7 @@ interface OutfitState {
 
 const initialState: OutfitState = {
     outfits: [],
-}
+};
 
 export const outfitSlice = createSlice({
     name: 'outfits',
