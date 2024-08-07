@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, View} from 'react-native';
 import { PieceType } from './clothesSlice';
-import GeneratorAddButton from './GeneratorAddButton';
+import GeneratorAddPieceButton from './GeneratorAddPieceButton';
 import GeneratorPiece from './GeneratorPiece';
 import { useAppSelector } from "../hooks";
 
@@ -28,7 +28,7 @@ export default function GeneratorList() {
             data={DATA}
             numColumns={2}
             renderItem={({item}) => {
-                return item.type === 'button' ? <GeneratorAddButton/> : <GeneratorPiece piece={item}/>
+                return item.type === 'button' ? <GeneratorAddPieceButton/> : <GeneratorPiece piece={item}/>
             }}
             /> 
         </View>

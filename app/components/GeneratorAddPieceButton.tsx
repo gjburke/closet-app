@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { RootStackParams } from '../navigators/MainNavigator';
 import type { StackNavigationProp } from '@react-navigation/stack';  
 
-export default function GeneratorAddButton() {
+export default function GeneratorAddPieceButton() {
     const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
 
     function handlePress() {
