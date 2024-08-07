@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { Dimensions } from 'react-native';
 
-function AddButton() {
+export default function GeneratorAddButton() {
     return (
         <Pressable style={ styles.addButton }>
             <Text>Add Piece To Outfit</Text>

@@ -2,9 +2,11 @@ import { StyleSheet, View, Text, FlatList, Pressable } from 'react-native';
 import GeneratorList from './GeneratorList'
 
 export default function Generator() {
-    <View style={ styles.container }>
-        <GeneratorList/>
-    </View>
+    return (
+        <View style={ styles.container }>
+            <GeneratorList/>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

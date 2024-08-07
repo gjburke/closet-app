@@ -2,7 +2,7 @@ import { View, Pressable, StyleSheet, Text } from 'react-native';
 import { Dimensions } from 'react-native';
 import { ItemProps } from './GeneratorList';
 
-export defaultofunction GeneratorPiece( { piece }: ItemProps) {
+export default function GeneratorPiece( { piece }: ItemProps) {
     return (
         <View>
             <View style={styles.piece}>
