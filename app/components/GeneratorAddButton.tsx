@@ -1,10 +1,21 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { View, Pressable, StyleSheet, Text } from 'react-native';
 import { Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParams } from '../navigators/MainNavigator';
+import type { StackNavigationProp } from '@react-navigation/stack';  
 
 export default function GeneratorAddButton() {
+    const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
+
+    function handlePress() {
+        navigation.navigate('GeneratorPieceAdder');    
+    }
+
     return (
-        <Pressable style={ styles.addButton }>
-            <Text>Add Piece To Outfit</Text>
+        <Pressable  onPress={ handlePress }>
+            <View style={ styles.addButton }>
+                <Text>Add Piece To Outfit</Text>
+            </View>
         </Pressable>
     );
 }
