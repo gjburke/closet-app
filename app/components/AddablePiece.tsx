@@ -1,16 +1,17 @@
-
 import { Pressable, StyleSheet, Text, View } from 'react-native' 
 import { Dimensions } from 'react-native';
-import { ItemProps } from './ClothesList';
+import { addPiece } from './generatorSlice';
+import { ItemProps } from './AddablePieceList';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParams } from '../navigators/MainNavigator';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { useAppDispatch } from '../hooks';
 
-export default function Piece({ piece }: ItemProps) {
-    const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
+export default function AddablePiece({ piece }: ItemProps) {
+    const navigation = useNavigation();
+    const dispatch = useAppDispatch();
 
     function handlePress() {
-        navigation.goBack()
+        dispatch(addPiece(piece));
+        navigation.goBack();
     }
 
     return (
