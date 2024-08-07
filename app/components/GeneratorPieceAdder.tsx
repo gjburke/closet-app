@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
+import AddablePieceList from './AddablePieceList'
 
-export default function PieceAdder() {
+export default function GeneratorPieceAdder() {
     const navigation = useNavigation();
 
     return (

@@ -1,6 +1,6 @@
 
 import { Pressable, StyleSheet, Text, View } from 'react-native' 
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import { ItemProps } from './ClothesList';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParams } from '../navigators/MainNavigator';

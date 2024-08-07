@@ -5,7 +5,7 @@ import AddablePiece from './AddablePiece';
 
 export type ItemProps = { piece: PieceType }
 
-export default function ClothesList() {
+export default function AddablePieceList() {
   const pieces = useAppSelector((state) => state.clothes.pieces);
 
   const DATA: PieceType[] = [];
