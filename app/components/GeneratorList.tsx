@@ -2,12 +2,14 @@ import { FlatList, StyleSheet, View} from 'react-native';
 import { PieceType } from './clothesSlice';
 import GeneratorAddButton from './GeneratorAddButton';
 import GeneratorPiece from './GeneratorPiece';
+import { useAppSelector } from "../hooks";
 
 export type ItemProps = {
     piece: PieceType;
 }
 
 export default function GeneratorList() {
+    const pieces = useAppSelector((state) => state.generator.pieces)
     const pieceButton: PieceType = {
         id: 'button',
         name: 'button',
@@ -15,11 +17,15 @@ export default function GeneratorList() {
         size: 'button',
         color: 'button',
     };
-    const pieces: PieceType[] = [pieceButton]
+
+    const DATA: PieceType[] = []
+    pieces.forEach(val => DATA.push(Object.assign({}, val)));
+    DATA.push(pieceButton)
+
     return (
         <View style={ styles.container }>
             <FlatList
-            data={pieces}
+            data={DATA}
             numColumns={2}
             renderItem={({item}) => {
                 return item.type === 'button' ? <GeneratorAddButton/> : <GeneratorPiece piece={item}/>
