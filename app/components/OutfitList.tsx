@@ -1,6 +1,5 @@
 import { StyleSheet, FlatList, View } from "react-native";
 import Outfit from './Outfit';
-import AddButton from "./AddButton";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { OutfitType } from './outfitSlice'
 
@@ -49,10 +48,13 @@ export default function OutfitList() {
   const DATA: OutfitType[] = [];
   outfits.forEach(outfit => DATA.push(Object.assign({}, outfit)));
 
+  console.log("Hello")
+  console.log(DATA)
+
   return (
     <View style={styles.container}>
       <FlatList
-      data={TEST_DATA}
+      data={DATA}
       numColumns={2}
       // Render add button instead of piece for pieces typed 'button'
       renderItem={({item}) => <Outfit outfit={item}/>}

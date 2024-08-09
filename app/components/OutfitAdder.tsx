@@ -10,9 +10,10 @@ export default function OutfitAdder() {
     const dispatch = useAppDispatch();
     const [text, setText] = useState('');
     const [currentID, setCurrentID] = useState(1);
+    const pieces = useAppSelector((state) => state.generator.pieces)
 
     function handleClick() {
-        const pieces = useAppSelector((state) => state.generator.pieces)
+        pieces.forEach(piece => console.log(piece))
         dispatch(addOutfit({ name: text, id: currentID.toString(), pieces }));
         dispatch(clear())
         setText('');
