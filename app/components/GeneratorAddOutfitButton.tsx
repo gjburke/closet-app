@@ -1,8 +1,14 @@
 import { View, Pressable, StyleSheet, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from 'react-native';
+import { RootStackParams } from '../navigators/MainNavigator';
+import type { StackNavigationProp } from '@react-navigation/stack';  
 
 export default function GeneratorAddOutfitButton() {
+    const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
+
     function handlePress() {
+        navigation.navigate('OutfitAdder');
     }
 
     return (

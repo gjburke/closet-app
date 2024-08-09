@@ -8,6 +8,7 @@ import { PieceType } from './../components/clothesSlice'
 import { OutfitType } from '../components/outfitSlice';
 import OutfitView from '../screens/OutfitView'
 import GeneratorPieceAdder from '../components/GeneratorPieceAdder';
+import OutfitAdder from '../components/OutfitAdder';
 
 export type RootStackParams = {
   Tabs: undefined;
@@ -19,6 +20,7 @@ export type RootStackParams = {
     outfit: OutfitType;
   };
   GeneratorPieceAdder: undefined;
+  OutfitAdder: undefined;
 } 
 
 const RootStack = createStackNavigator<RootStackParams>();
@@ -35,6 +37,7 @@ export default function MainNavigator() {
           <RootStack.Screen options={{ title: "Piece" }} name="PieceScreen" component={PieceScreen}/>
           <RootStack.Screen options={{ title: "Outfit" }} name="OutfitView" component={OutfitView}/>
           <RootStack.Screen options={{ title: "Add Piece to Outfit" }} name="GeneratorPieceAdder" component={GeneratorPieceAdder}/>
+          <RootStack.Screen options={{ title: "Add Outfit" }} name="OutfitAdder" component={OutfitAdder}/>
         </RootStack.Group>
       </RootStack.Navigator>
     </NavigationContainer>
