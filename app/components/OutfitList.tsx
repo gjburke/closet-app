@@ -48,9 +48,6 @@ export default function OutfitList() {
   const DATA: OutfitType[] = [];
   outfits.forEach(outfit => DATA.push(Object.assign({}, outfit)));
 
-  console.log("Hello")
-  console.log(DATA)
-
   return (
     <View style={styles.container}>
       <FlatList
