@@ -1,14 +1,8 @@
 import { View, Pressable, StyleSheet, Text } from 'react-native';
 import { Dimensions } from 'react-native';
-import { useAppSelector, useAppDispatch } from "../hooks";
-import { addOutfit } from './outfitSlice'
 
 export default function GeneratorAddOutfitButton() {
-    const dispatch = useAppDispatch();
-
     function handlePress() {
-        const pieces = useAppSelector((state) => state.generator.pieces)
-        dispatch(addOutfit(pieces))
     }
 
     return (
