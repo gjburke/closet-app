@@ -3,7 +3,6 @@ import type { RootState } from '../store'
 import { PieceType } from './clothesSlice'
 
 export interface OutfitType {
-    id: string;
     name: string;
     pieces: Array<PieceType>;
 };
