@@ -5,7 +5,6 @@ import { addPiece, PieceType } from './clothesSlice';
 import { useAppDispatch } from '../hooks';
 
 const samplePiece: PieceType = {
-  id: '1',
   name: 'the rodgers',
   type: 'shorts', 
   size: 'big as hell',
@@ -16,12 +15,10 @@ export default function PieceAdder() {
     const navigation = useNavigation();
     const dispatch = useAppDispatch();
     const [text, setText] = useState('');
-    const [currentID, setCurrentID] = useState(1);
 
     function handleClick() {
-      dispatch(addPiece({ ...samplePiece, name: text, id: currentID.toString()}));
+      dispatch(addPiece({ ...samplePiece, name: text }));
       setText('');
-      setCurrentID(currentID + 1);
       navigation.goBack();
     }
     return (

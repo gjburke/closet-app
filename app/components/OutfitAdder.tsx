@@ -9,15 +9,13 @@ export default function OutfitAdder() {
     const navigation = useNavigation();
     const dispatch = useAppDispatch();
     const [text, setText] = useState('');
-    const [currentID, setCurrentID] = useState(1);
     const pieces = useAppSelector((state) => state.generator.pieces)
 
     function handleClick() {
         pieces.forEach(piece => console.log(piece))
-        dispatch(addOutfit({ name: text, id: currentID.toString(), pieces }));
+        dispatch(addOutfit({ name: text, pieces }));
         dispatch(clear())
         setText('');
-        setCurrentID(currentID + 1);
         navigation.goBack();
     }
     return (

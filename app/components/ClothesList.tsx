@@ -10,7 +10,6 @@ export default function ClothesList() {
   // Get the pieces from the store and create button object 
   const pieces = useAppSelector((state) => state.clothes.pieces);
   const pieceButton: PieceType = {
-    id: 'button',
     name: 'button',
     type: 'button', 
     size: 'button',
@@ -33,7 +32,7 @@ export default function ClothesList() {
         }
         return <Piece piece={item}/>
       }}
-      keyExtractor={item => item.id}
+      keyExtractor={item => item.name}
       />
     </View>
   );

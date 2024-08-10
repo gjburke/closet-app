@@ -18,7 +18,7 @@ export default function AddablePieceList() {
       numColumns={2}
       // Render add button instead of piece for pieces typed 'button'
       renderItem={({item}) => <AddablePiece piece={item}/>}
-      keyExtractor={item => item.id}
+      keyExtractor={item => item.name}
       />
     </View>
   );

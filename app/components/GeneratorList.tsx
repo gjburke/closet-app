@@ -11,7 +11,6 @@ export type ItemProps = {
 export default function GeneratorList() {
     const pieces = useAppSelector((state) => state.generator.pieces)
     const pieceButton: PieceType = {
-        id: 'button',
         name: 'button',
         type: 'button', 
         size: 'button',

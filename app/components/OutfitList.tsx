@@ -7,10 +7,8 @@ export type ItemProps = { outfit: OutfitType }
 
 const TEST_DATA: Array<OutfitType> = [
     {
-        id: "1",
         name: "test 1",
         pieces: [{
-            id: "1",
             name: "test cloth 1",
             type: "test",
             size: "test",
@@ -18,10 +16,8 @@ const TEST_DATA: Array<OutfitType> = [
         }],
     },
     {
-        id: "2",
         name: "test 2",
         pieces: [{
-            id: "2",
             name: "test cloth 2",
             type: "test",
             size: "test",
@@ -29,10 +25,8 @@ const TEST_DATA: Array<OutfitType> = [
         }],
     },
     {
-        id: "3",
         name: "test 3",
         pieces: [{
-            id: "3",
             name: "test cloth 3",
             type: "test",
             size: "test",
@@ -55,7 +49,7 @@ export default function OutfitList() {
       numColumns={2}
       // Render add button instead of piece for pieces typed 'button'
       renderItem={({item}) => <Outfit outfit={item}/>}
-      keyExtractor={item => item.id}
+      keyExtractor={item => item.name}
       />
     </View>
   );
