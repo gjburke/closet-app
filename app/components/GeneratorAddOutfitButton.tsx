@@ -14,7 +14,7 @@ export default function GeneratorAddOutfitButton() {
     return (
         <Pressable  onPress={ handlePress }>
             <View style={ styles.addButton }>
-                <Text>Add Piece To Outfit</Text>
+                <Text>Add Outfit To Closet</Text>
             </View>
         </Pressable>
     );
