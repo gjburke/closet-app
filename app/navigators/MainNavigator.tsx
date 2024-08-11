@@ -1,14 +1,14 @@
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
-import PieceAdder from './../components/PieceAdder'
+import PieceAdder from '../components/closet/clothes/PieceAdder'
 import TabNavigtor from './TabNavigator';
 import PieceScreen from './../screens/PieceScreen'
-import { PieceType } from './../components/clothesSlice'
-import { OutfitType } from '../components/outfitSlice';
+import { PieceType } from '../components/closet/clothes/clothesSlice'
+import { OutfitType } from '../components/closet/outfits/outfitSlice';
 import OutfitView from '../screens/OutfitView'
-import GeneratorPieceAdder from '../components/GeneratorPieceAdder';
-import OutfitAdder from '../components/OutfitAdder';
+import GeneratorPieceAdder from '../components/generator/GeneratorPieceAdder';
+import OutfitAdder from '../components/closet/outfits/OutfitAdder';
 
 export type RootStackParams = {
   Tabs: undefined;

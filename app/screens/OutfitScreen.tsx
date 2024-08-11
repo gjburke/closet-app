@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import OutfitList from "../components/OutfitList";
+import OutfitList from "../components/closet/outfits/OutfitList";
 
 export default function Index() {
   return (

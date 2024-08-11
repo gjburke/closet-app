@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { useState } from 'react';
 import { addOutfit } from './outfitSlice';
-import { clear } from './generatorSlice';
-import { useAppDispatch, useAppSelector } from '../hooks';
+import { clear } from '../../generator/generatorSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 
 export default function OutfitAdder() {
     const navigation = useNavigation();

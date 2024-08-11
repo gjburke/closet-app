@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import Generator from "../components/Generator";
+import Generator from "../components/generator/Generator";
 
 export default function Index() {
   return (

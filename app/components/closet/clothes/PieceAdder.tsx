@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { useState } from 'react';
 import { addPiece, PieceType } from './clothesSlice';
-import { useAppDispatch } from '../hooks';
+import { useAppDispatch } from '../../../hooks';
 
 const samplePiece: PieceType = {
   name: 'the rodgers',

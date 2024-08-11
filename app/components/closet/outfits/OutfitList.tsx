@@ -1,6 +1,6 @@
 import { StyleSheet, FlatList, View } from "react-native";
 import Outfit from './Outfit';
-import { useAppSelector, useAppDispatch } from "../hooks";
+import { useAppSelector, useAppDispatch } from "../../../hooks";
 import { OutfitType } from './outfitSlice'
 
 export type ItemProps = { outfit: OutfitType }

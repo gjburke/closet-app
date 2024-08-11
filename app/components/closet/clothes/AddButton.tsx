@@ -1,7 +1,7 @@
 import { StyleSheet, Pressable, Text } from 'react-native'
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParams } from '../navigators/MainNavigator';
+import { RootStackParams } from '../../../navigators/MainNavigator';
 import type { StackNavigationProp } from '@react-navigation/stack';  
 
 

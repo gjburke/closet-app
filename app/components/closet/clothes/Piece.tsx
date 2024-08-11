@@ -1,21 +1,21 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native' 
-import {Dimensions} from 'react-native';
-import { ItemProps } from './OutfitList';
+import { Dimensions } from 'react-native';
+import { ItemProps } from './ClothesList';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackParams } from '../navigators/MainNavigator';
+import { RootStackParams } from '../../../navigators/MainNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-export default function Outfit({ outfit }: ItemProps) {
+export default function Piece({ piece }: ItemProps) {
     const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
 
     function handlePress() {
-        navigation.navigate('OutfitView', { outfit })
+        navigation.navigate('PieceScreen', { piece })
     }
 
     return (
         <Pressable onPress={handlePress}> 
             <View style={styles.item}>
-                <Text>This is an outfit with the name: {outfit.name}!</Text>
+                <Text>This is a piece of clothing with name: {piece.name}!</Text>
             </View>
         </Pressable>
     );

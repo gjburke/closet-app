@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import clothesReducer from './components/clothesSlice'
-import outfitReducer from './components/outfitSlice'
-import generatorReducer from './components/generatorSlice';
+import clothesReducer from './components/closet/clothes/clothesSlice'
+import outfitReducer from './components/closet/outfits/outfitSlice'
+import generatorReducer from './components/generator/generatorSlice';
 
 export const store = configureStore({
   reducer: {

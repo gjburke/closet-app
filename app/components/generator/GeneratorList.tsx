@@ -1,8 +1,8 @@
 import { FlatList, StyleSheet, View} from 'react-native';
-import { PieceType } from './clothesSlice';
+import { PieceType } from '../closet/clothes/clothesSlice';
 import GeneratorAddPieceButton from './GeneratorAddPieceButton';
 import GeneratorPiece from './GeneratorPiece';
-import { useAppSelector } from "../hooks";
+import { useAppSelector } from "../../hooks";
 
 export type ItemProps = {
     piece: PieceType;

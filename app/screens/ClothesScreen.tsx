@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import ClothesList from "../components/ClothesList";
+import ClothesList from "../components/closet/clothes/ClothesList";
 
 export default function Index() {
   return (

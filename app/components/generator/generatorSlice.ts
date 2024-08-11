@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { PieceType } from './clothesSlice'
+import { PieceType } from '../closet/clothes/clothesSlice'
 
 interface GeneratorState {
     pieces: Array<PieceType>,

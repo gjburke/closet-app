@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../store'
-import { PieceType } from './clothesSlice'
+import type { RootState } from '../../../store'
+import { PieceType } from '../clothes/clothesSlice'
 
 export interface OutfitType {
     name: string;
