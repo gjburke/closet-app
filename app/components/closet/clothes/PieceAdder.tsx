@@ -39,7 +39,7 @@ export default function PieceAdder() {
     }
 
     function handleClick() {
-      dispatch(addPiece({ ...samplePiece, name: text }));
+      dispatch(addPiece({ ...samplePiece, name: text, image_uri: image }));
       setText('');
       navigation.goBack();
     }
