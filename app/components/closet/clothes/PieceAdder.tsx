@@ -18,12 +18,18 @@ export default function PieceAdder() {
     const [text, setText] = useState('');
 
     // For the camera
-    const [image, setImage] = useState<string | null>(null);
-    const [status, requestCameraPermission] = ImagePicker.useCameraPermissions();
+    const [image, setImage] = useState<string>('');
 
     async function takePhoto() {
+      const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+
+      if (permissionResult.granted == false) {
+        alert("You have not allowed camera permissions");
+        return;
+      }
+
       let result = await ImagePicker.launchCameraAsync({
-        cameraType: ImagePicker.CameraType.front,
+        cameraType: ImagePicker.CameraType.back,
         quality: 0,
       });
 
@@ -41,17 +47,18 @@ export default function PieceAdder() {
     return (
         <View style={ styles.container }>
             <Text>This is the piece adder</Text>
-            <View style={ styles.container }>
-              { image && <Image source={{ uri: image }}/>}
-              {
-                (!status || !status.granted)
-                ? <Pressable onPress={takePhoto}>
-                    <Text>Take Photo</Text>
-                  </Pressable>
-                : <Pressable onPress={requestCameraPermission}>
-                    <Text>Allow Camera</Text>
-                  </Pressable>
-              }
+            <View style={ styles.imagePicker }>
+              <Image source={ (() => {
+                  if (!image) {
+                    return require('./../../../../assets/splash.png');
+                  } else {
+                    return { uri: image };
+                  }
+                })()
+              } style={ styles.image }/>
+              <Pressable onPress={takePhoto}>
+                <Text>Take Photo</Text>
+              </Pressable>
             </View>
             <TextInput style={{ height: 40 }} placeholder="Type Name Here" onChangeText={newText => setText(newText)} defaultValue={text}/>
             <Pressable onPress={handleClick}> 
@@ -67,8 +74,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  imagePicker: {
+    height: 200,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   image: {
-    height: 400,
-    width: 400,
+    height: 200,
+    width: 200,
   },
 });
