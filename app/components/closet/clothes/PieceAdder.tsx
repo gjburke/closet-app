@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { useState } from 'react';
 import { addPiece, PieceType } from './clothesSlice';
 import { useAppDispatch } from '../../../hooks';
+import * as ImagePicker from 'expo-image-picker';
 
 const samplePiece: PieceType = {
   name: 'the rodgers',
@@ -15,6 +16,10 @@ export default function PieceAdder() {
     const navigation = useNavigation();
     const dispatch = useAppDispatch();
     const [text, setText] = useState('');
+
+    // For the camera
+    const [image, setImage] = useState(null);
+    const [status, requestCameraPermission] = ImagePicker.useCameraPermissions();
 
     function handleClick() {
       dispatch(addPiece({ ...samplePiece, name: text }));
