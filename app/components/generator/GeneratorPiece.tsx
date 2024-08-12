@@ -1,4 +1,4 @@
-import { View, Pressable, StyleSheet, Text } from 'react-native';
+import { Image, View, Pressable, StyleSheet, Text } from 'react-native';
 import { Dimensions } from 'react-native';
 import { ItemProps } from './GeneratorList';
 
