@@ -18,12 +18,17 @@ export default function PieceAdder() {
     const [text, setText] = useState('');
 
     // For the camera
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState<string | null>(null);
     const [status, requestCameraPermission] = ImagePicker.useCameraPermissions();
 
     async function takePhoto() {
-      if (!status || !status.granted) {
-        requestCameraPermission
+      let result = await ImagePicker.launchCameraAsync({
+        cameraType: ImagePicker.CameraType.front,
+        quality: 0,
+      });
+
+      if (!result.canceled) {
+        setImage(result.assets[0].uri)
       }
     }
 
@@ -44,7 +49,7 @@ export default function PieceAdder() {
                     <Text>Take Photo</Text>
                   </Pressable>
                 : <Pressable onPress={requestCameraPermission}>
-                    <Text>Take Photo</Text>
+                    <Text>Allow Camera</Text>
                   </Pressable>
               }
             </View>
