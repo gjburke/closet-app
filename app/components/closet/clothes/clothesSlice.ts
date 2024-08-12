@@ -6,6 +6,7 @@ export interface PieceType {
     type: string; 
     size: string;
     color: string;
+    image_uri: string;
 };
 
 interface ClothesState {
