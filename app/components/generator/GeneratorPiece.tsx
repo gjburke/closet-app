@@ -7,6 +7,14 @@ export default function GeneratorPiece( { piece }: ItemProps) {
         <View>
             <View style={styles.piece}>
                 <Text>This is a piece of clothing with name: {piece.name}!</Text>
+                <Image source={ (() => {
+                    if (!piece.image_uri) {
+                      return require('./../../../assets/splash.png');
+                    } else {
+                      return { uri: piece.image_uri };
+                    }
+                  })()
+                } style={ styles.image }/>
             </View>
         </View>
     );
@@ -22,5 +30,9 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 8,
+  },
+  image: {
+    height: 50,
+    width: 50,
   },
 });
