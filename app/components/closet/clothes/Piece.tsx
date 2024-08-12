@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native' 
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native' 
 import { Dimensions } from 'react-native';
 import { ItemProps } from './ClothesList';
 import { useNavigation } from '@react-navigation/native';
@@ -16,6 +16,14 @@ export default function Piece({ piece }: ItemProps) {
         <Pressable onPress={handlePress}> 
             <View style={styles.item}>
                 <Text>This is a piece of clothing with name: {piece.name}!</Text>
+                <Image source={ (() => {
+                  if (!piece.image_uri) {
+                    return require('./../../../../assets/splash.png');
+                  } else {
+                    return { uri: piece.image_uri };
+                  }
+                })()
+              } style={ styles.image }/>
             </View>
         </Pressable>
     );
@@ -34,5 +42,9 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 32,
+    },
+    image: {
+        height: 50,
+        width: 50,
     },
 });
