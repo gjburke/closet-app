@@ -9,6 +9,11 @@ export interface PieceType {
     image_uri?: string;
 };
 
+export interface EditPiecePayload {
+    name: string;
+    newPiece: PieceType;
+}
+
 interface ClothesState {
     pieces: Array<PieceType>,
 };
@@ -23,6 +28,12 @@ export const clothesSlice = createSlice({
     reducers: {
         addPiece: (state, action: PayloadAction<PieceType>) => {
             state.pieces.push(action.payload)
+        },
+        editPiece: (state, action: PayloadAction<EditPiecePayload>) => {
+            const edittedPiece = state.pieces.filter((piece) => piece.name === action.payload.name);
+            if (edittedPiece.length > 0) {
+                edittedPiece[0] = action.payload.newPiece;
+            }
         },
     },
 });
