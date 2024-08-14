@@ -19,10 +19,16 @@ export default function PieceScreen({ route, navigation }: Props) {
   function revert() {
     setIsEditing(false);
   }
+  function deletePiece() {
+    navigation.goBack();
+  }
   
   if (isEditing) {
     return (
       <View style= { styles.container }>
+        <Pressable onPress={deletePiece}>
+          <Text>Delete Piece</Text>
+        </Pressable>
         <Pressable onPress={revert}>
           <Text>Revert Changes</Text>
         </Pressable>
