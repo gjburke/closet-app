@@ -4,6 +4,7 @@ import { RootStackParams } from '../navigators/MainNavigator';
 import PieceView from '../components/closet/clothes/PieceView';
 import { PieceType } from './../components/closet/clothes/clothesSlice';
 import { useState } from 'react';
+import PieceEditor from '../components/closet/clothes/PieceEditor';
 
 export type ItemProps = { piece: PieceType }
 type Props = NativeStackScreenProps<RootStackParams, "PieceScreen">;
@@ -15,11 +16,20 @@ export default function PieceScreen({ route, navigation }: Props) {
   function edit() {
     setIsEditing(true);
   }
+  function revert() {
+    setIsEditing(false);
+  }
   
   if (isEditing) {
     return (
       <View style= { styles.container }>
-
+        <Pressable onPress={revert}>
+          <Text>Revert Changes</Text>
+        </Pressable>
+        <PieceEditor piece={piece}/>
+        <Pressable onPress={() => navigation.goBack()}>
+          <Text>GO BACK</Text>
+        </Pressable>
       </View>
     );
   } else {
