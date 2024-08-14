@@ -30,9 +30,17 @@ export const clothesSlice = createSlice({
             state.pieces.push(action.payload)
         },
         editPiece: (state, action: PayloadAction<EditPiecePayload>) => {
-            const edittedPiece = state.pieces.filter((piece) => piece.name === action.payload.name);
-            if (edittedPiece.length > 0) {
-                edittedPiece[0] = action.payload.newPiece;
+            let indexToEdit = -1;
+
+            for (let i = 0; i < state.pieces.length; i++) {
+                if (state.pieces[i].name === action.payload.name) {
+                    indexToEdit = i;
+                    break;
+                }
+            }
+
+            if (indexToEdit > -1) {
+                state.pieces[indexToEdit] = action.payload.newPiece;
             }
         },
     },

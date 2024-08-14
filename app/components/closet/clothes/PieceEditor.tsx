@@ -1,9 +1,20 @@
 import { Image, StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { ItemProps } from '../../../screens/PieceScreen';
 import { useState } from 'react';
+import { useAppDispatch } from '../../../hooks';
+import { PieceType, editPiece } from './clothesSlice';
 
 export default function PieceEditor({ piece }: ItemProps) {
-    const [name, setName] = useState(piece.name)
+    const [name, setName] = useState(piece.name);
+    const dispatch = useAppDispatch();
+
+    function saveEdits() {
+        const newPiece: PieceType = {
+            ...piece,
+            name: name,
+        };
+        dispatch(editPiece({ name: piece.name, newPiece }));
+    }
 
     return (
         <View style={ styles.container }>
@@ -18,6 +29,9 @@ export default function PieceEditor({ piece }: ItemProps) {
             }
         })()
         } style={ styles.image }/>
+        <Pressable onPress={saveEdits}>
+            <Text>Save Edits</Text>
+        </Pressable>
         </View>
     );
 }
