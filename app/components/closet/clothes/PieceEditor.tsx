@@ -13,6 +13,7 @@ export default function PieceEditor({ piece }: ItemProps) {
             ...piece,
             name: name,
         };
+        alert('Edits Saved');
         dispatch(editPiece({ name: piece.name, newPiece }));
     }
 
