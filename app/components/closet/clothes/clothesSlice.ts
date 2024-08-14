@@ -38,6 +38,6 @@ export const clothesSlice = createSlice({
     },
 });
 
-export const { addPiece } = clothesSlice.actions;
+export const { addPiece, editPiece } = clothesSlice.actions;
 
 export default clothesSlice.reducer;
