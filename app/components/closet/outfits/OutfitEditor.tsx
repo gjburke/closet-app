@@ -1,8 +1,17 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { ItemProps } from '../../../screens/OutfitScreen';
 import GeneratorList from '../../generator/GeneratorList';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { clear } from '../../generator/generatorSlice';
 
 export default function OutfitEditor({ outfit }: ItemProps) {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(clear());
+    });
+
     return (
         <View style={ styles.container }>
             <Text>This is the outfit editor</Text>
