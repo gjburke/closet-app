@@ -41,9 +41,23 @@ export const outfitSlice = createSlice({
                 state.outfits[indexToEdit] = action.payload.newOutfit;
             }
         },
+        deleteOutfit: (state, action: PayloadAction<string>) => {
+            let indexToDelete = -1;
+
+            for (let i = 0; i < state.outfits.length; i++) {
+                if (state.outfits[i].name === action.payload) {
+                    indexToDelete = i;
+                    break;
+                }
+            }
+
+            if (indexToDelete > -1) {
+                state.outfits.splice(indexToDelete, 1);
+            }
+        }
     }
 });
 
-export const { addOutfit, editOutfit } = outfitSlice.actions;
+export const { addOutfit, editOutfit, deleteOutfit } = outfitSlice.actions;
 
 export default outfitSlice.reducer;
