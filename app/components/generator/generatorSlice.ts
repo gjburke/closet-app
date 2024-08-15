@@ -16,12 +16,26 @@ export const generatorSlice = createSlice({
         addPiece: (state, action: PayloadAction<PieceType>) => {
             state.pieces.push(action.payload);
         },
+        deletePiece: (state, action: PayloadAction<string>) => {
+            let indexToDelete = -1;
+
+            for (let i = 0; i < state.pieces.length; i++) {
+                if (state.pieces[i].name === action.payload) {
+                    indexToDelete = i;
+                    break;
+                }
+            }
+
+            if (indexToDelete > -1) {
+                state.pieces.splice(indexToDelete, 1);
+            }
+        },
         clear: (state) => {
             state.pieces = [];
         },
     }
 });
 
-export const { addPiece, clear } = generatorSlice.actions;
+export const { addPiece,, deletePiece, clear } = generatorSlice.actions;
 
 export default generatorSlice.reducer;
