@@ -5,19 +5,25 @@ import { RootStackParams } from '../navigators/MainNavigator';
 import { OutfitType } from './../components/closet/outfits/outfitSlice';
 import OutfitView from '../components/closet/outfits/OutfitView';
 import OutfitEditor from '../components/closet/outfits/OutfitEditor';
+import { useDispatch } from 'react-redux';
+import { clear } from '../components/generator/generatorSlice';
 
 export type ItemProps = { outfit: OutfitType }
 type Props = NativeStackScreenProps<RootStackParams, "OutfitView">;
 
 export default function OutfitScreen({ route, navigation }: Props) {
   const outfit = route.params.outfit;
+  const dispatch = useDispatch();
+
   const [isEditing, setIsEditing] = useState(false);
 
   function edit() {
     setIsEditing(true);
+    dispatch(clear());
   }
   function revert() {
     setIsEditing(false);
+    dispatch(clear());
   }
   
   if (isEditing) {
