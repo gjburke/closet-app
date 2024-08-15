@@ -7,6 +7,11 @@ export interface OutfitType {
     pieces: Array<PieceType>;
 };
 
+export interface EditOutfitPayload {
+    name: string;
+    newOutfit: OutfitType;
+}
+
 interface OutfitState {
     outfits: Array<OutfitType>,
 };
@@ -21,10 +26,24 @@ export const outfitSlice = createSlice({
     reducers: {
         addOutfit: (state, action: PayloadAction<OutfitType>) => {
             state.outfits.push(action.payload);
-        }
+        },
+        editOutfit: (state, action: PayloadAction<EditOutfitPayload>) => {
+            let indexToEdit = -1;
+
+            for (let i = 0; i < state.outfits.length; i++) {
+                if (state.outfits[i].name === action.payload.name) {
+                    indexToEdit = i;
+                    break;
+                }
+            }
+
+            if (indexToEdit > -1) {
+                state.outfits[indexToEdit] = action.payload.newOutfit;
+            }
+        },
     }
 });
 
-export const { addOutfit } = outfitSlice.actions;
+export const { addOutfit, editOutfit } = outfitSlice.actions;
 
 export default outfitSlice.reducer;
