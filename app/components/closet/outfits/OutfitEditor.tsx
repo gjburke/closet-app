@@ -3,7 +3,7 @@ import { ItemProps } from '../../../screens/OutfitScreen';
 import GeneratorList from '../../generator/GeneratorList';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setPieces } from '../../generator/generatorSlice';
+import { clear, setPieces } from '../../generator/generatorSlice';
 import { useAppSelector } from '../../../hooks';
 import { editOutfit } from './outfitSlice';
 
@@ -32,6 +32,9 @@ export default function OutfitEditor({ outfit }: ItemProps) {
 
     useEffect(() => {
         dispatch(setPieces(outfit.pieces));
+        return () => {
+            dispatch(clear());
+        }
     });
 
     // For the render, maybe when changing name stuff you can pass in the
