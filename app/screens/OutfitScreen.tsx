@@ -4,7 +4,7 @@ import { RootStackParams } from '../navigators/MainNavigator';
 
 type Props = NativeStackScreenProps<RootStackParams, "OutfitView">;
 
-export default function OutfitView({ route, navigation }: Props) {
+export default function OutfitScreen({ route, navigation }: Props) {
   const outfit = route.params.outfit;
   
   return (

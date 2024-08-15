@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import OutfitList from "../components/closet/outfits/OutfitList";
 
-export default function Index() {
+export default function OutfitsScreen() {
   return (
     <View style={styles.container}>
       <Text>This is the outfits tab</Text>

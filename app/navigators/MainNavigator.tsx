@@ -6,7 +6,7 @@ import TabNavigtor from './TabNavigator';
 import PieceScreen from './../screens/PieceScreen'
 import { PieceType } from '../components/closet/clothes/clothesSlice'
 import { OutfitType } from '../components/closet/outfits/outfitSlice';
-import OutfitView from '../screens/OutfitView'
+import OutfitView from '../screens/OutfitScreen'
 import GeneratorPieceAdder from '../components/generator/GeneratorPieceAdder';
 import OutfitAdder from '../components/closet/outfits/OutfitAdder';
 
