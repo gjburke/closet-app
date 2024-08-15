@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 import { RootStackParams } from '../navigators/MainNavigator';
@@ -6,6 +7,7 @@ type Props = NativeStackScreenProps<RootStackParams, "OutfitView">;
 
 export default function OutfitScreen({ route, navigation }: Props) {
   const outfit = route.params.outfit;
+  const [isEditing, setIsEditing] = useState(false);
   
   return (
     <View style={ styles.container }>
