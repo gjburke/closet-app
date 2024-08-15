@@ -3,13 +3,13 @@ import { ItemProps } from '../../../screens/OutfitScreen';
 import GeneratorList from '../../generator/GeneratorList';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { clear } from '../../generator/generatorSlice';
+import { setPieces } from '../../generator/generatorSlice';
 
 export default function OutfitEditor({ outfit }: ItemProps) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(clear());
+        dispatch(setPieces(outfit.pieces));
     });
 
     return (
