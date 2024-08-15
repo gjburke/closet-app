@@ -19,11 +19,9 @@ export default function OutfitScreen({ route, navigation }: Props) {
 
   function edit() {
     setIsEditing(true);
-    dispatch(clear());
   }
   function revert() {
     setIsEditing(false);
-    dispatch(clear());
   }
   
   if (isEditing) {
