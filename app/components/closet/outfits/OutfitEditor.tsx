@@ -4,6 +4,24 @@ import GeneratorList from '../../generator/GeneratorList';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPieces } from '../../generator/generatorSlice';
+import { useAppSelector } from '../../../hooks';
+
+function OutfitSelector() {
+    const pieces = useAppSelector((state) => state.generator.pieces)
+
+    function saveOutfit() {
+        alert("Edits Saved");
+    }
+
+    return (
+        <View style={ styles.container }>
+            <GeneratorList/>
+            <Pressable onPress={saveOutfit}>
+                <Text>Save Changes</Text>
+            </Pressable>
+        </View>
+    );
+}
 
 export default function OutfitEditor({ outfit }: ItemProps) {
     const dispatch = useDispatch();
@@ -12,18 +30,11 @@ export default function OutfitEditor({ outfit }: ItemProps) {
         dispatch(setPieces(outfit.pieces));
     });
 
-    function saveOutfit() {
-        alert("Edits Saved");
-    }
-
     return (
         <View style={ styles.container }>
             <Text>This is the outfit editor</Text>
             <Text>The name for the outfit is: { outfit.name }</Text>
-            <GeneratorList/>
-            <Pressable onPress={saveOutfit}>
-                <Text>Save Changes</Text>
-            </Pressable>
+            <OutfitSelector/>
         </View>
     );
 }
