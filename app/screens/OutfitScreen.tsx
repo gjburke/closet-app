@@ -22,7 +22,7 @@ export default function OutfitScreen({ route, navigation }: Props) {
   
   if (isEditing) {
     return (
-      <View>
+      <View style={ styles.container }>
         <Pressable onPress={revert}>
           <Text>Revert Changes</Text>
         </Pressable>
@@ -34,7 +34,7 @@ export default function OutfitScreen({ route, navigation }: Props) {
     );
   } else {
     return (
-      <View>
+      <View style={ styles.container }>
         <Pressable onPress={edit}>
           <Text>Edit Outfit</Text>
         </Pressable>
