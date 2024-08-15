@@ -12,12 +12,16 @@ export default function OutfitEditor({ outfit }: ItemProps) {
         dispatch(setPieces(outfit.pieces));
     });
 
+    function saveOutfit() {
+        alert("Edits Saved");
+    }
+
     return (
         <View style={ styles.container }>
             <Text>This is the outfit editor</Text>
             <Text>The name for the outfit is: { outfit.name }</Text>
             <GeneratorList/>
-            <Pressable>
+            <Pressable onPress={saveOutfit}>
                 <Text>Save Changes</Text>
             </Pressable>
         </View>
