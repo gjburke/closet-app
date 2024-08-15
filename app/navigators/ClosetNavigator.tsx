@@ -1,6 +1,6 @@
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import ClothesScreen from './../screens/ClothesScreen' 
-import OutfitScreen from './../screens/OutfitScreen'
+import OutfitScreen from '../screens/OutfitsScreen'
 
 const Tab = createMaterialTopTabNavigator();
 
