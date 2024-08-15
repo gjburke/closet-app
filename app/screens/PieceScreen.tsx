@@ -23,7 +23,7 @@ export default function PieceScreen({ route, navigation }: Props) {
     setIsEditing(false);
   }
   function remove() {
-    dispatch(deletePiece(piece.name))
+    dispatch(deletePiece(piece.name));
     navigation.goBack();
   }
   

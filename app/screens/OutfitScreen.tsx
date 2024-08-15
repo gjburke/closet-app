@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 import { RootStackParams } from '../navigators/MainNavigator';
-import { OutfitType } from './../components/closet/outfits/outfitSlice';
+import { OutfitType, deleteOutfit } from './../components/closet/outfits/outfitSlice';
 import OutfitView from '../components/closet/outfits/OutfitView';
 import OutfitEditor from '../components/closet/outfits/OutfitEditor';
 import { useDispatch } from 'react-redux';
@@ -23,10 +23,17 @@ export default function OutfitScreen({ route, navigation }: Props) {
   function revert() {
     setIsEditing(false);
   }
+  function remove() {
+    dispatch(deleteOutfit(outfit.name));
+    navigation.goBack();
+  }
   
   if (isEditing) {
     return (
       <View style={ styles.container }>
+        <Pressable onPress={remove}>
+          <Text>Delete Outfit</Text>
+        </Pressable>
         <Pressable onPress={revert}>
           <Text>Revert Changes</Text>
         </Pressable>
