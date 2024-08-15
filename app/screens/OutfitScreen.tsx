@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/nati
 import { RootStackParams } from '../navigators/MainNavigator';
 import { OutfitType } from './../components/closet/outfits/outfitSlice';
 import OutfitView from '../components/closet/outfits/OutfitView';
+import OutfitEditor from '../components/closet/outfits/OutfitEditor';
 
 export type ItemProps = { outfit: OutfitType }
 type Props = NativeStackScreenProps<RootStackParams, "OutfitView">;
@@ -25,6 +26,7 @@ export default function OutfitScreen({ route, navigation }: Props) {
         <Pressable onPress={revert}>
           <Text>Revert Changes</Text>
         </Pressable>
+        <OutfitEditor outfit={outfit}/>
         <Pressable onPress={() => navigation.goBack()}>
           <Text>Go Back</Text>
         </Pressable>
