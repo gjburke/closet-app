@@ -33,6 +33,9 @@ export const generatorSlice = createSlice({
         clear: (state) => {
             state.pieces = [];
         },
+        setPieces: (state, action: PayloadAction<PieceType[]>) => {
+           state.pieces = action.payload; 
+        }
     }
 });
 
