@@ -39,6 +39,6 @@ export const generatorSlice = createSlice({
     }
 });
 
-export const { addPiece, deletePiece, clear } = generatorSlice.actions;
+export const { addPiece, deletePiece, clear, setPieces } = generatorSlice.actions;
 
 export default generatorSlice.reducer;
