@@ -27,6 +27,11 @@ export default function OutfitScreen({ route, navigation }: Props) {
     dispatch(deleteOutfit(outfit.name));
     navigation.goBack();
   }
+
+  // Will need to address this I think. Either through outfitView or outfitlist or something. 
+  // Funky bug where this doesnt change even after editing, maybe some sort of rerender is not getting triggered
+  // Etiher that or the store is not editing the outfit properly, resulting in some sort of duplication
+  // Most likely its a result of passing the piece as props in the list. Mayb eneed to rerender the list or something
   
   if (isEditing) {
     return (

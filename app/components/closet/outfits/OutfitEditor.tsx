@@ -1,24 +1,33 @@
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { ItemProps } from '../../../screens/OutfitScreen';
 import GeneratorList from '../../generator/GeneratorList';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { clear, setPieces } from '../../generator/generatorSlice';
 import { useAppSelector } from '../../../hooks';
-import { editOutfit } from './outfitSlice';
+import { OutfitType, editOutfit } from './outfitSlice';
 
 function OutfitSelector({ outfit }: ItemProps) {
-    const pieces = useAppSelector((state) => state.generator.pieces)
     const dispatch = useDispatch();
+    const [name, setName] = useState(outfit.name);
+
+    const pieces = useAppSelector((state) => state.generator.pieces)
 
     function saveOutfit() {
         alert("Edits Saved");
-        const newOutfit = {...outfit, pieces: pieces}
+        const newOutfit: OutfitType = {
+            ...outfit, 
+            name: name,
+            pieces: pieces,
+        }
         dispatch(editOutfit({name: outfit.name, newOutfit: newOutfit}));
+        alert('Edits saved');
     }
 
     return (
         <View style={ styles.container }>
+            <Text>Update Name: </Text>
+            <TextInput style={{ height: 40 }} onChangeText={name => setName(name)} defaultValue={name}/>
             <GeneratorList/>
             <Pressable onPress={saveOutfit}>
                 <Text>Save Changes</Text>
