@@ -8,8 +8,7 @@ type Props = NativeStackScreenProps<RootStackParams, "PieceScreen">;
 export default function PieceView({ piece }: ItemProps) {
   return (
     <View style={ styles.container }>
-      <Text>This is the piece screen</Text>
-      <Text>The name for the piece is: { piece.name }</Text>
+      <Text>This is the piece view</Text>
       <Image source={ (() => {
         if (!piece.image_uri) {
           return require('./../../../../assets/splash.png');
@@ -18,6 +17,10 @@ export default function PieceView({ piece }: ItemProps) {
         }
       })()
     } style={ styles.image }/>
+      <Text>Name: { piece.name }</Text>
+      <Text>Type: { piece.type } </Text>
+      <Text>Size: { piece.size } </Text>
+      <Text>Color: { piece.color } </Text>
     </View>
   );
 }
