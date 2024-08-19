@@ -6,6 +6,7 @@ import { ItemProps } from '../../../screens/PieceScreen';
 type Props = NativeStackScreenProps<RootStackParams, "PieceScreen">;
 
 export default function PieceView({ piece }: ItemProps) {
+  // Same issue with the image as with the outfits here
   return (
     <View style={ styles.container }>
       <Text>This is the piece view</Text>

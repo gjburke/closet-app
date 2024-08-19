@@ -15,7 +15,10 @@ const samplePiece: PieceType = {
 export default function PieceAdder() {
     const navigation = useNavigation();
     const dispatch = useAppDispatch();
-    const [text, setText] = useState('');
+    const [name, setName] = useState('');
+    const [type, setType] = useState('');
+    const [size, setSize] = useState('');
+    const [color, setColor] = useState('');
 
     // For the camera
     const [image, setImage] = useState<string>('');
@@ -39,8 +42,13 @@ export default function PieceAdder() {
     }
 
     function handleClick() {
-      dispatch(addPiece({ ...samplePiece, name: text, image_uri: image }));
-      setText('');
+      dispatch(addPiece({ 
+        name: name, 
+        type: type,
+        size: size,
+        color: color,
+        image_uri: image,
+      }));
       navigation.goBack();
     }
 
@@ -60,7 +68,16 @@ export default function PieceAdder() {
                 <Text>Take Photo</Text>
               </Pressable>
             </View>
-            <TextInput style={{ height: 40 }} placeholder="Type Name Here" onChangeText={newText => setText(newText)} defaultValue={text}/>
+        <View>
+            <Text>Name: </Text>
+            <TextInput style={{ height: 30 }} onChangeText={newName => setName(newName)} defaultValue={name}/>
+            <Text>Type: </Text>
+            <TextInput style={{ height: 30 }} onChangeText={newType => setType(newType)} defaultValue={type}/>
+            <Text>Size: </Text>
+            <TextInput style={{ height: 30 }} onChangeText={newSize => setSize(newSize)} defaultValue={size}/>
+            <Text>Color: </Text>
+            <TextInput style={{ height: 30 }} onChangeText={newColor => setColor(newColor)} defaultValue={color}/>
+        </View>
             <Pressable onPress={handleClick}> 
                 <Text>Add Piece</Text>
             </Pressable>
