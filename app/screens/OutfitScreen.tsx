@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { clear } from '../components/generator/generatorSlice';
 
 export type ItemProps = { outfit: OutfitType }
-type Props = NativeStackScreenProps<RootStackParams, "OutfitView">;
+type Props = NativeStackScreenProps<RootStackParams, "OutfitScreen">;
 
 export default function OutfitScreen({ route, navigation }: Props) {
   const outfit = route.params.outfit;
