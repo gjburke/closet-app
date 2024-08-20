@@ -9,7 +9,6 @@ export default function OutfitAdder() {
     const navigation = useNavigation();
     const dispatch = useAppDispatch();
     const [name, setName] = useState('');
-    const [submittable, setSubmittable] = useState(false);
 
     const pieces = useAppSelector((state) => state.generator.pieces);
     const outfits = useAppSelector((state) => state.outfits.outfits);
