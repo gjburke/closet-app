@@ -17,13 +17,8 @@ export default function OutfitAdder() {
     const outfitNames = new Set();
     outfits.forEach((outfit => outfitNames.add(outfit.name)));
 
-    function checkSubmittable(name: string) {
+    function isSumbittable() {
         return !(name.length <= 0 || outfitNames.has(name));
-    }
-
-    function onChangeName(newName: string) {
-        setName(newName);
-        setSubmittable(checkSubmittable(newName));
     }
 
     function handleSubmit() {
@@ -36,9 +31,9 @@ export default function OutfitAdder() {
     return (
         <View style={ styles.container }>
             <Text>This is the outfit adder</Text>
-            <TextInput style={{ height: 40 }} placeholder="Type Name of Outfit Here" onChangeText={ (newName) => onChangeName(newName) } defaultValue={name}/>
+            <TextInput style={{ height: 40 }} placeholder="Type Name of Outfit Here" onChangeText={ (newName) => setName(newName) } defaultValue={name}/>
             {
-                submittable ? (
+                isSumbittable() ? (
                     <Pressable onPress={ handleSubmit }> 
                         <Text>Add Outfit</Text>
                     </Pressable>
