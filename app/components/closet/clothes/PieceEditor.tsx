@@ -27,6 +27,7 @@ export default function PieceEditor({ piece }: ItemProps) {
 
     // Issue with image not re-rendering once photo is taken, not sure why yet
     // But it does still work technically, one you go out and in it changes correctly
+    // Also only is if the image starts as blank...
     async function takePhoto() {
       const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
 
