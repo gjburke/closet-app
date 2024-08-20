@@ -10,7 +10,6 @@ import { OutfitType, editOutfit } from './outfitSlice';
 function OutfitSelector({ outfit }: ItemProps) {
     const dispatch = useDispatch();
     const [name, setName] = useState(outfit.name);
-    const [submittable, setSubmittable] = useState(true);
 
     const pieces = useAppSelector((state) => state.generator.pieces)
     const outfits = useAppSelector((state) => state.outfits.outfits);
@@ -18,13 +17,8 @@ function OutfitSelector({ outfit }: ItemProps) {
     const outfitNames = new Set();
     outfits.forEach((outfit => outfitNames.add(outfit.name)));
     
-    function checkSubmittable(name: string) {
+    function isSubmittable() {
         return outfit.name == name || !(name.length <= 0 || outfitNames.has(name));
-    }
-
-    function onChangeName(newName: string) {
-        setName(newName);
-        setSubmittable(checkSubmittable(newName));
     }
 
     function saveOutfit() {
@@ -41,10 +35,10 @@ function OutfitSelector({ outfit }: ItemProps) {
     return (
         <View style={ styles.container }>
             <Text>Update Name: </Text>
-            <TextInput style={{ height: 40 }} onChangeText={ newName => onChangeName(newName) } defaultValue={name}/>
+            <TextInput style={{ height: 40 }} onChangeText={ newName => setName(newName) } defaultValue={name}/>
             <GeneratorList/>
             {
-                submittable ? (
+                isSubmittable() ? (
                     <Pressable onPress={ saveOutfit }> 
                         <Text>Submit Edits</Text>
                     </Pressable>
