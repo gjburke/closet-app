@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Image, StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { useState } from 'react';
 import { addPiece, PieceType } from './clothesSlice';
-import { useAppDispatch } from '../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import * as ImagePicker from 'expo-image-picker';
 
 const samplePiece: PieceType = {
@@ -14,11 +14,13 @@ const samplePiece: PieceType = {
 
 export default function PieceAdder() {
     const navigation = useNavigation();
+    const pieces = useAppSelector((state) => state.clothes.pieces)
     const dispatch = useAppDispatch();
     const [name, setName] = useState('');
     const [type, setType] = useState('');
     const [size, setSize] = useState('');
     const [color, setColor] = useState('');
+    const [addable, setAddable] = useState(false);
 
     // For the camera
     const [image, setImage] = useState<string>('');
@@ -39,6 +41,25 @@ export default function PieceAdder() {
       if (!result.canceled) {
         setImage(result.assets[0].uri)
       }
+    }
+
+    // Input checking
+    const names = new Set();
+    pieces.forEach(piece => names.add(piece.name));
+
+    function checkAddable() {
+      return (
+        name.length > 0 &&
+        type.length > 0 &&
+        size.length > 0 &&
+        color.length > 0 &&
+        !names.has(name)
+      );
+    }
+
+    function updateText(setText: (value: React.SetStateAction<string>) => void, text: string) {
+      setText(text);
+      setAddable(checkAddable);
     }
 
     function handleClick() {
@@ -68,19 +89,27 @@ export default function PieceAdder() {
                 <Text>Take Photo</Text>
               </Pressable>
             </View>
-        <View>
-            <Text>Name: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newName => setName(newName)} defaultValue={name}/>
-            <Text>Type: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newType => setType(newType)} defaultValue={type}/>
-            <Text>Size: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newSize => setSize(newSize)} defaultValue={size}/>
-            <Text>Color: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newColor => setColor(newColor)} defaultValue={color}/>
-        </View>
-            <Pressable onPress={handleClick}> 
-                <Text>Add Piece</Text>
-            </Pressable>
+            <View>
+                <Text>Name: </Text>
+                <TextInput style={{ height: 30 }} onChangeText={newName => updateText(setName, newName)} defaultValue={name}/>
+                <Text>Type: </Text>
+                <TextInput style={{ height: 30 }} onChangeText={newType => updateText(setType, newType)} defaultValue={type}/>
+                <Text>Size: </Text>
+                <TextInput style={{ height: 30 }} onChangeText={newSize => updateText(setSize, newSize)} defaultValue={size}/>
+                <Text>Color: </Text>
+                <TextInput style={{ height: 30 }} onChangeText={newColor => updateText(setColor, newColor)} defaultValue={color}/>
+            </View>
+            {
+              addable ? (
+                <Pressable onPress={handleClick}> 
+                    <Text>Add Piece</Text>
+                </Pressable>
+              ) : (
+                <Pressable style={{ backgroundColor: 'red' }}> 
+                    <Text>Cannot Add Piece</Text>
+                </Pressable>
+              )
+            }
         </View>
     );
 }
