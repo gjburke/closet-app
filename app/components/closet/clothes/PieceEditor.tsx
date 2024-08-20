@@ -1,7 +1,7 @@
 import { Image, StyleSheet, View, Text, TextInput, Pressable } from 'react-native';
 import { ItemProps } from '../../../screens/PieceScreen';
 import { useState } from 'react';
-import { useAppDispatch } from '../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { PieceType, editPiece } from './clothesSlice';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -11,6 +11,8 @@ export default function PieceEditor({ piece }: ItemProps) {
     const [size, setSize] = useState(piece.size);
     const [color, setColor] = useState(piece.color);
     const [image, setImage] = useState(piece.image_uri);
+    const [addable, setAddable] = useState(true);
+    const pieces = useAppSelector((state) => state.clothes.pieces)
     const dispatch = useAppDispatch();
 
     function saveEdits() {
@@ -46,6 +48,25 @@ export default function PieceEditor({ piece }: ItemProps) {
       }
     }
 
+    // Input checking
+    const names = new Set();
+    pieces.forEach(piece => names.add(piece.name));
+
+    function checkAddable() {
+      return (
+        name.length > 0 &&
+        type.length > 0 &&
+        size.length > 0 &&
+        color.length > 0 &&
+        (name == piece.name || !names.has(name))
+      );
+    }
+
+    function updateText(setText: (value: React.SetStateAction<string>) => void, text: string) {
+      setText(text);
+      setAddable(checkAddable);
+    }
+
     return (
         <View style={ styles.container }>
         <Text>This is the piece editor</Text>
@@ -63,18 +84,26 @@ export default function PieceEditor({ piece }: ItemProps) {
             </Pressable>
         </View>
         <View>
-            <Text>Update Name: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newName => setName(newName)} defaultValue={name}/>
-            <Text>Update Type: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newType => setType(newType)} defaultValue={type}/>
-            <Text>Update Size: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newSize => setSize(newSize)} defaultValue={size}/>
-            <Text>Update Color: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newColor => setColor(newColor)} defaultValue={color}/>
+            <Text>Name: </Text>
+            <TextInput style={{ height: 30 }} onChangeText={newName => updateText(setName, newName)} defaultValue={name}/>
+            <Text>Type: </Text>
+            <TextInput style={{ height: 30 }} onChangeText={newType => updateText(setType, newType)} defaultValue={type}/>
+            <Text>Size: </Text>
+            <TextInput style={{ height: 30 }} onChangeText={newSize => updateText(setSize, newSize)} defaultValue={size}/>
+            <Text>Color: </Text>
+            <TextInput style={{ height: 30 }} onChangeText={newColor => updateText(setColor, newColor)} defaultValue={color}/>
         </View>
-        <Pressable onPress={saveEdits}>
-            <Text>Save Edits</Text>
-        </Pressable>
+            {
+              addable ? (
+                <Pressable onPress={ saveEdits }> 
+                    <Text>Add Piece</Text>
+                </Pressable>
+              ) : (
+                <Pressable style={{ backgroundColor: 'red' }}> 
+                    <Text>Cannot Add Piece</Text>
+                </Pressable>
+              )
+            }
         </View>
     );
 }
