@@ -11,7 +11,6 @@ export default function PieceEditor({ piece }: ItemProps) {
     const [size, setSize] = useState(piece.size);
     const [color, setColor] = useState(piece.color);
     const [image, setImage] = useState(piece.image_uri);
-    const [addable, setAddable] = useState(true);
     const pieces = useAppSelector((state) => state.clothes.pieces)
     const dispatch = useAppDispatch();
 
@@ -52,7 +51,7 @@ export default function PieceEditor({ piece }: ItemProps) {
     const names = new Set();
     pieces.forEach(piece => names.add(piece.name));
 
-    function checkAddable() {
+    function isAddable() {
       return (
         name.length > 0 &&
         type.length > 0 &&
@@ -60,11 +59,6 @@ export default function PieceEditor({ piece }: ItemProps) {
         color.length > 0 &&
         (name == piece.name || !names.has(name))
       );
-    }
-
-    function updateText(setText: (value: React.SetStateAction<string>) => void, text: string) {
-      setText(text);
-      setAddable(checkAddable);
     }
 
     return (
@@ -85,22 +79,22 @@ export default function PieceEditor({ piece }: ItemProps) {
         </View>
         <View>
             <Text>Name: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newName => updateText(setName, newName)} defaultValue={name}/>
+            <TextInput style={{ height: 30 }} onChangeText={newName => setName(newName)} defaultValue={name}/>
             <Text>Type: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newType => updateText(setType, newType)} defaultValue={type}/>
+            <TextInput style={{ height: 30 }} onChangeText={newType => setType(newType)} defaultValue={type}/>
             <Text>Size: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newSize => updateText(setSize, newSize)} defaultValue={size}/>
+            <TextInput style={{ height: 30 }} onChangeText={newSize => setSize(newSize)} defaultValue={size}/>
             <Text>Color: </Text>
-            <TextInput style={{ height: 30 }} onChangeText={newColor => updateText(setColor, newColor)} defaultValue={color}/>
+            <TextInput style={{ height: 30 }} onChangeText={newColor => setColor(newColor)} defaultValue={color}/>
         </View>
             {
-              addable ? (
+              isAddable() ? (
                 <Pressable onPress={ saveEdits }> 
-                    <Text>Add Piece</Text>
+                    <Text>Edit Piece</Text>
                 </Pressable>
               ) : (
                 <Pressable style={{ backgroundColor: 'red' }}> 
-                    <Text>Cannot Add Piece</Text>
+                    <Text>Cannot Edit Piece</Text>
                 </Pressable>
               )
             }
