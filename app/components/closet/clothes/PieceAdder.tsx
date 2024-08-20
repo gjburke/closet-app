@@ -20,7 +20,6 @@ export default function PieceAdder() {
     const [type, setType] = useState('');
     const [size, setSize] = useState('');
     const [color, setColor] = useState('');
-    const [addable, setAddable] = useState(false);
 
     // For the camera
     const [image, setImage] = useState<string>('');
@@ -47,7 +46,7 @@ export default function PieceAdder() {
     const names = new Set();
     pieces.forEach(piece => names.add(piece.name));
 
-    function checkAddable() {
+    function isAddable() {
       return (
         name.length > 0 &&
         type.length > 0 &&
@@ -55,11 +54,6 @@ export default function PieceAdder() {
         color.length > 0 &&
         !names.has(name)
       );
-    }
-
-    function updateText(setText: (value: React.SetStateAction<string>) => void, text: string) {
-      setText(text);
-      setAddable(checkAddable);
     }
 
     function handleClick() {
@@ -91,16 +85,16 @@ export default function PieceAdder() {
             </View>
             <View>
                 <Text>Name: </Text>
-                <TextInput style={{ height: 30 }} onChangeText={newName => updateText(setName, newName)} defaultValue={name}/>
+                <TextInput style={{ height: 30 }} onChangeText={newName => setName(newName)} defaultValue={name}/>
                 <Text>Type: </Text>
-                <TextInput style={{ height: 30 }} onChangeText={newType => updateText(setType, newType)} defaultValue={type}/>
+                <TextInput style={{ height: 30 }} onChangeText={newType => setType(newType)} defaultValue={type}/>
                 <Text>Size: </Text>
-                <TextInput style={{ height: 30 }} onChangeText={newSize => updateText(setSize, newSize)} defaultValue={size}/>
+                <TextInput style={{ height: 30 }} onChangeText={newSize => setSize(newSize)} defaultValue={size}/>
                 <Text>Color: </Text>
-                <TextInput style={{ height: 30 }} onChangeText={newColor => updateText(setColor, newColor)} defaultValue={color}/>
+                <TextInput style={{ height: 30 }} onChangeText={newColor => setColor(newColor)} defaultValue={color}/>
             </View>
             {
-              addable ? (
+              isAddable() ? (
                 <Pressable onPress={handleClick}> 
                     <Text>Add Piece</Text>
                 </Pressable>
