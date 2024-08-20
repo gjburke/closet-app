@@ -14,6 +14,11 @@ export const generatorSlice = createSlice({
     initialState,
     reducers: {
         addPiece: (state, action: PayloadAction<PieceType>) => {
+            for (let i = 0; i < state.pieces.length; i++) {
+                if (state.pieces[i].name === action.payload.name) {
+                    return;
+                }
+            }
             state.pieces.push(action.payload);
         },
         deletePiece: (state, action: PayloadAction<string>) => {
