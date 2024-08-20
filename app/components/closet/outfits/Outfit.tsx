@@ -9,7 +9,7 @@ export default function Outfit({ outfit }: ItemProps) {
     const navigation = useNavigation<StackNavigationProp<RootStackParams>>();
 
     function handlePress() {
-        navigation.navigate('OutfitView', { outfit })
+        navigation.navigate('OutfitScreen', { outfit })
     }
 
     return (
