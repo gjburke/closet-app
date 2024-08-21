@@ -7,7 +7,9 @@ The VirtualCloset Mobile App is currently in development. It will be a place whe
 ## Technologies Used
 
 Language: TypeScript
+
 Framework: Expo, React Native
+
 Tools and Libraries: React Redux Toolkit, React Navigation, Expo Camera 
 
 ## Features
